@@ -1,11 +1,11 @@
 /* react redux */
 // eslint-disable-next-line no-use-before-define
-import React from 'react'
+import React, { useEffect } from 'react'
 import bus from '@/utils/eventBus'
 import axiosReq from '@/utils/axiosReq'
 import { connect } from 'react-redux'
 import { Button, Form, Input, message, Space, Table, DatePicker } from 'antd'
-// import antUtils from '@/utils/antUtils'
+import antUtils from '@/utils/antUtils'
 import { ObjTy } from '@/types/common'
 const { RangePicker } = DatePicker
 
@@ -24,13 +24,12 @@ function ErrorLog() {
     })
   }
   const tableDelClick = (row: ObjTy) => {
-    deleteByIdReq(row.id).then(() => {
-      selectPageReq()
-      message.success(`【${row.pageUrl}】删除成功`).then()
+    antUtils.antConfirm(`您确定要删除${row.pageUrl}】？`).then(() => {
+      deleteByIdReq(row.id).then(() => {
+        selectPageReq()
+        message.success(`【${row.pageUrl}】删除成功`).then()
+      })
     })
-    // antUtils.antConfirm(`您确定要删除${row.pageUrl}】？`).then(() => {
-    //
-    // })
   }
   const columns: any = [
     {
@@ -84,23 +83,26 @@ function ErrorLog() {
       message.warning('表格选项不能为空').then()
       return
     }
-    axiosReq({
-      url: `/ty-user/errorCollection/deleteBatchIds`,
-      data: rowIdArr,
-      method: 'DELETE',
-      bfLoading: true
-    }).then(() => {
-      selectPageReq()
-      message.success('删除成功').then()
+    antUtils.antConfirm(`确认删除【${rowIdArr.join(',')}】吗?`).then(() => {
+      axiosReq({
+        url: `/ty-user/errorCollection/deleteBatchIds`,
+        data: rowIdArr,
+        method: 'DELETE',
+        bfLoading: true
+      }).then(() => {
+        selectPageReq()
+        message.success('删除成功').then()
+      })
     })
-    // antUtils.antConfirm(`确认删除【${rowIdArr.join(',')}】吗?`).then(() => {
-    //
-    // })
   }
   /*分页相关*/
   const [pageSize, setPageSize]: Array<any> = React.useState(10)
   const [pageNum, setPageNum]: Array<any> = React.useState(1)
-  const [pageTotal, setPageTotal]: Array<any> = React.useState([])
+  const [pageTotal, setPageTotal]: Array<any> = React.useState(0)
+  //副作用更新数据
+  useEffect(() => {
+    selectPageReq()
+  }, [pageSize, pageNum])
   let selectPageReq = (values?: ObjTy) => {
     const data = Object.assign(values ?? {}, {
       pageNum: pageNum,
@@ -121,7 +123,8 @@ function ErrorLog() {
   const handleCurrentChange = (pageNum: Number, pageSize: number | undefined) => {
     setPageNum(pageNum)
     setPageSize(pageSize)
-    selectPageReq()
+    //has error instance of useEffect
+    // selectPageReq()
   }
   /*form表单相关*/
   const onFinish = (fieldsValue: ObjTy) => {

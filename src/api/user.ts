@@ -1,6 +1,7 @@
 import request from '@/utils/axiosReq'
+import { ObjTy } from '@/types/common'
 
-export function loginReq(data) {
+export function loginReq(data: ObjTy) {
   return request({
     url: '/ty-user/user/loginValid',
     data,

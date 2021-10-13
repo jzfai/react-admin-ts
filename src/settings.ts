@@ -1,5 +1,6 @@
 interface SettingTy {
   title: string
+  logo: string
   fixedHeader: boolean
   sidebarLogo: boolean
   showTitle: boolean
@@ -16,6 +17,7 @@ interface SettingTy {
 
 const setting: SettingTy = {
   title: 'Vue3 Admin Ts',
+  logo: 'http://8.135.1.141/file/images/logo.svg',
   /**
    * @type {boolean} true | false
    * @description Whether fix the header

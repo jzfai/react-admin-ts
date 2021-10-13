@@ -7,9 +7,10 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import './Logo.scss'
 import { ObjTy } from '@/types/common'
 import { StateTy } from '@/types/store'
+import settings from '@/settings'
 function Logo(props: ObjTy) {
-  let title = 'react  admin  template'
-  let logo = 'http://8.135.1.141/file/images/logo.svg'
+  let title = settings.title
+  let logo = settings.logo
   const renderImageTitle = () => {
     if (props.opened) {
       return (
