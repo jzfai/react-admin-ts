@@ -1,4 +1,5 @@
 import reactRefresh from '@vitejs/plugin-react-refresh'
+// @ts-ignore
 import path, { resolve } from 'path'
 import viteSvgIcons from 'vite-plugin-svg-icons'
 import legacy from '@vitejs/plugin-legacy'
@@ -6,12 +7,24 @@ import legacy from '@vitejs/plugin-legacy'
 import { viteMockServe } from 'vite-plugin-mock'
 import settings from './src/settings'
 const prodMock = settings.openProdMock
+import setting from './src/settings'
 export default ({ command }: any) => {
   return {
-    base: './',
+    /*
+     * "/vue3-admin-plus" nginx deploy folder
+     * detail to look https://vitejs.cn/config/#base
+     * how to config, such as http://8.135.1.141/vue3-admin-plus/#/dashboard
+     * "/vue3-admin-plus/" --> config to base is you need
+     * http://8.135.1.141 --> if you config "/" , you can visit attached  to http://8.135.1.141
+     * */
+    base: setting.viteBasePath,
     define: {
       'process.platform': null,
-      'process.version': null
+      'process.version': null,
+      GLOBAL_STRING: JSON.stringify('i am global var from vite.config.js define'),
+      GLOBAL_VAR: {
+        test: 'i am global var from vite.config.js define'
+      }
     },
     clearScreen: false,
     server: {
@@ -20,12 +33,12 @@ export default ({ command }: any) => {
       port: 5006, // 类型： number 指定服务器端口;
       open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
       cors: true // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
+      //proxy look for https://vitejs.cn/config/#server-proxy
       // proxy: {
-      //   // 类型： Record<string, string | ProxyOp 为开发服务器配置自定义代理规则
-      //   '/scala-ms': {
-      //     target: 'http://shangchai.intranet.ruixiude.com:15980/',
+      //   '/api': {
+      //     target: loadEnv(mode, process.cwd()).VITE_APP_PROXY_URL,
       //     changeOrigin: true,
-      //     secure: false
+      //     rewrite: (path) => path.replace(/^\/api/, '')
       //   }
       // }
     },
@@ -54,24 +67,26 @@ export default ({ command }: any) => {
         logger: true
       })
     ],
-
     build: {
-      minify: 'terser',
+      // minify: 'terser',
       brotliSize: false,
       // 消除打包大小超过500kb警告
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 5000,
       terserOptions: {
+        //detail to look https://terser.org/docs/api-reference#compress-options
         compress: {
-          drop_console: true,
+          drop_console: false,
+          pure_funcs: ['console.log', 'console.info'],
           drop_debugger: true
         }
-      }
-    },
-    css: {
-      preprocessorOptions: {
-        //define global scss variable
-        scss: {
-          additionalData: `@import "@/styles/variables.scss";`
+      },
+      //build assets Separate
+      assetsDir: 'static/assets',
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
         }
       }
     },
@@ -81,6 +96,14 @@ export default ({ command }: any) => {
         '@': resolve(__dirname, 'src')
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.mjs']
+    },
+    css: {
+      preprocessorOptions: {
+        //define global scss variable
+        scss: {
+          additionalData: `@import "@/styles/variables.scss";`
+        }
+      }
     }
   }
 }

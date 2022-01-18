@@ -6,7 +6,7 @@ import axiosReq from '@/utils/axiosReq'
 import { connect } from 'react-redux'
 import { Button, Form, Input, message, Space, Table, DatePicker } from 'antd'
 import antUtils from '@/utils/antUtils'
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 const { RangePicker } = DatePicker
 
 function ErrorLog() {
@@ -16,7 +16,7 @@ function ErrorLog() {
   /*删除*/
   let deleteByIdReq = (id: Number) => {
     return axiosReq({
-      url: '/ty-user/errorCollection/deleteById',
+      url: '/integration-front/errorCollection/deleteById',
       data: { id: id },
       isParams: true,
       method: 'delete',
@@ -42,6 +42,20 @@ function ErrorLog() {
       title: '页面路径',
       dataIndex: 'pageUrl',
       key: 'pageUrl',
+      width: 180,
+      align: 'center'
+    },
+    {
+      title: '版本号',
+      dataIndex: 'version',
+      key: 'version',
+      width: 110,
+      align: 'center'
+    },
+    {
+      title: '浏览器类型',
+      dataIndex: 'browserType',
+      key: 'browserType',
       width: 180,
       align: 'center'
     },
@@ -85,7 +99,7 @@ function ErrorLog() {
     }
     antUtils.antConfirm(`确认删除【${rowIdArr.join(',')}】吗?`).then(() => {
       axiosReq({
-        url: `/ty-user/errorCollection/deleteBatchIds`,
+        url: `/integration-front/errorCollection/deleteBatchIds`,
         data: rowIdArr,
         method: 'DELETE',
         bfLoading: true
@@ -109,7 +123,7 @@ function ErrorLog() {
       pageSize: pageSize
     })
     let reqConfig = {
-      url: '/ty-user/errorCollection/selectPage',
+      url: '/integration-front/errorCollection/selectPage',
       method: 'get',
       data,
       isParams: true,

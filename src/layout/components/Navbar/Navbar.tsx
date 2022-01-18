@@ -8,8 +8,8 @@ import Hamburger from '../Hamburger'
 import Breadcrumb from '../Breadcrumb'
 import { CaretDownOutlined } from '@ant-design/icons'
 import { A_logout } from '@/store/actions'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 function Navbar(props: ObjTy) {
   const dispatch = useDispatch()
   const toggleSideBar = () => {

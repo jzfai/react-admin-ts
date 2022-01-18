@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 function SvgIcon(props: ObjTy) {
   const [iconName, setIconName]: any = useState(null)
   useEffect(() => {

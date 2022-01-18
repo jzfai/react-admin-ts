@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { A_getUserInfo } from '@/store/actions/user'
 import Layout from '@/layout'
 import Login from '@/views/login'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 function Router(props: ObjTy) {
   const { token, A_getUserInfo } = props
   return (

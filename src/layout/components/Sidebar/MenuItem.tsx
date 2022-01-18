@@ -8,9 +8,9 @@ const { SubMenu } = Menu
 import Icon from './Icon'
 import path from 'path'
 import { isExternal } from '@/utils/validate'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
-import { RouterRowTy } from '@/types/router'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
+import { RouterRowTy } from '~/router'
 function menuItem(props: ObjTy) {
   /*侧边栏默认选中和展开*/
   let location = useLocation()

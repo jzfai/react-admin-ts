@@ -1,10 +1,10 @@
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 
 interface UserTy {
   name: string
   role: string
   avatar: string
-  token: ObjTy
+  token: string
 }
 interface AppTy {
   sidebar: {

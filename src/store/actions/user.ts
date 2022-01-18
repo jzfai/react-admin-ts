@@ -2,7 +2,7 @@ import * as types from '../action-types'
 import { getInfoReq } from '@/api/user'
 import { setToken, removeToken } from '@/utils/auth'
 import { loginReq, logoutReq } from '@/api/user'
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 
 export const A_USER_TOKEN = (data: string) => {
   return {
@@ -43,9 +43,9 @@ export const A_login = (reqData: ObjTy) => (dispatch: any) => {
   })
 }
 
-export const A_logout = (token: string) => (dispatch: any) => {
+export const A_logout = () => (dispatch: any) => {
   return new Promise((resolve, reject) => {
-    logoutReq(token)
+    logoutReq()
       .then((res: ObjTy) => {
         if (res.code === 20000) {
           dispatch(A_resetUser())
@@ -59,9 +59,9 @@ export const A_logout = (token: string) => (dispatch: any) => {
   })
 }
 
-export const A_getUserInfo = (token: string) => (dispatch: any) => {
+export const A_getUserInfo = () => (dispatch: any) => {
   return new Promise((resolve, reject) => {
-    getInfoReq(token)
+    getInfoReq()
       .then((response: ObjTy) => {
         const { data } = response
         const { username } = data

@@ -9,6 +9,8 @@ module.exports = {
     process: true,
     __dirname: true,
     document: true,
+    GLOBAL_VAR: true,
+    GLOBAL_STRING: true,
     localStorage: true,
     window: true,
     defineProps: true,

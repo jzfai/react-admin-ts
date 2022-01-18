@@ -1,4 +1,4 @@
-import { ActionTy, AppTy } from '@/types/store'
+import { ActionTy, AppTy } from '~/store'
 
 const initState: AppTy = {
   sidebar: {

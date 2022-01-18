@@ -1,8 +1,8 @@
 /* react redux */
 import React from 'react'
 import { connect } from 'react-redux'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 import './Hanburger.scss'
 function Hamburger(props: ObjTy) {
   const toggleClick = () => {

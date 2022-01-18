@@ -3,8 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Sidebar, Navbar, AppMain } from './components'
 import './Layout.scss'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 function Layout(props: ObjTy) {
   return (
     <div className={`${!props.opened && 'closeSidebar'}`}>

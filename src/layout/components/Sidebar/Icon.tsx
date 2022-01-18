@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-use-before-define
 import React, { Fragment } from 'react'
 import SvgIcon from '@/icons/svg-icon'
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 import './Icon.scss'
 function Icon(props: ObjTy) {
   return (

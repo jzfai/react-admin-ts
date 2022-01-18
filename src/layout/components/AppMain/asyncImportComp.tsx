@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState, useEffect } from 'react'
-import { ObjTy } from '@/types/common'
+import { ObjTy } from '~/common'
 
 const asyncImportComponent = function (importComp: any) {
   function AsyncComponent(props: ObjTy) {

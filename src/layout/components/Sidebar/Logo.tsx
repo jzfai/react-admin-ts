@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 /*引入本页样式*/
 import './Logo.scss'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 import settings from '@/settings'
 function Logo(props: ObjTy) {
   let title = settings.title

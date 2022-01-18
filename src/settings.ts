@@ -9,10 +9,11 @@ interface SettingTy {
   showHamburger: boolean
   isNeedLogin: boolean
   isNeedNprogress: boolean
-  needTagsView: boolean
-  tagsViewNum: number
+  needTagsView?: boolean
+  tagsViewNum?: number
   openProdMock: boolean
   errorLog: string | Array<string>
+  viteBasePath: string
 }
 
 const setting: SettingTy = {
@@ -60,24 +61,30 @@ const setting: SettingTy = {
    * @type {boolean} true | false
    * @description Whether show TagsView
    */
-  needTagsView: true,
-  /**
-   * @description TagsView show number
-   */
-  tagsViewNum: 6,
+  // needTagsView: true,
+  // /**
+  //  * @description TagsView show number
+  //  */
+  // tagsViewNum: 6,
   //showSettings: true
   /**
    * @type {boolean} true | false
    * @description Whether  open prod mock
+   * in react openProdMock can't use
    */
-  openProdMock: true,
+  openProdMock: false,
   /**
    * @type {string | array} 'serve' | ['build', 'serve']
    * @description Need show err logs component.
    * The default is only used in the production env
    * If you want to also use it in dev, you can pass ['build', 'serve']
    */
-  errorLog: ['serve', 'build']
+  errorLog: ['build'],
+  /*
+   * vite.config.js base config
+   * such as
+   * */
+  viteBasePath: '/react-admin-ts/'
 }
 
 export default setting

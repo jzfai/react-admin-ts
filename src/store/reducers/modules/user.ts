@@ -1,7 +1,6 @@
 import * as types from '../../action-types'
 import { getToken } from '@/utils/auth'
-import { ObjTy } from '@/types/common'
-import { ActionTy, UserTy } from '@/types/store'
+import { ActionTy, UserTy } from '~/store'
 
 const userInfo: UserTy = {
   name: '',
@@ -10,7 +9,6 @@ const userInfo: UserTy = {
   token: getToken()
 }
 export default function user(state = userInfo, action: ActionTy) {
-  console.log('action', action)
   switch (action.type) {
     case types.USER_TOKEN:
       return {

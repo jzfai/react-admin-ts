@@ -5,8 +5,8 @@ import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, message } from 'antd'
 import { A_login, A_getUserInfo } from '@/store/actions'
 import './login.scss'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 function Login(props: ObjTy) {
   const [loading, setLoading] = useState(false)
   const [tipMsg, setTipMsg] = useState('')
@@ -18,8 +18,8 @@ function Login(props: ObjTy) {
       .then(() => {
         message.success('登录成功')
       })
-      .catch((msg: string) => {
-        setTipMsg(msg)
+      .catch((res: ObjTy) => {
+        setTipMsg(res.msg)
         setLoading(false)
       })
   }

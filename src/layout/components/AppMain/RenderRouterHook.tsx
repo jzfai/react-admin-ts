@@ -8,7 +8,7 @@ import path from 'path'
 import asyncImport from './asyncImportComp'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { asyncRouters } from '@/router/config'
-import { RouterRowTy, RouterTy } from '@/types/router'
+import { RouterRowTy, RouterTy } from '~/router'
 
 function RenderRouterHook() {
   const resolvePath = (uPath: string, routePath: string) => {

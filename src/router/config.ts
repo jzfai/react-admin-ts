@@ -1,5 +1,5 @@
 // export const constantRoutes = []
-import { RouterTy } from '@/types/router'
+import { RouterTy } from '~/router'
 
 export const asyncRouters: RouterTy = [
   {

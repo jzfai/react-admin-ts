@@ -5,8 +5,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux'
 import store from '@/store'
-import { ObjTy } from '@/types/common'
-import { StateTy } from '@/types/store'
+import { ObjTy } from '~/common'
+import { StateTy } from '~/store'
 function ReactHookTemplate(props: ObjTy) {
   const [uState, setState] = React.useState({ count: 111 })
   //redux相关
