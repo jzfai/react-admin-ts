@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
 /*其他引入*/
 import { isExternal } from '@/utils/validate'
-import path from 'path'
+import path from 'path-browserify'
 import asyncImport from './asyncImportComp'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { asyncRouters } from '@/router/config'

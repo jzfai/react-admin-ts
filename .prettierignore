@@ -1,8 +1,10 @@
-.history
+history
 .idea
 node_modules
+# System
 .DS_Store
 dist
-dist-ssr
 *.local
-yarn.lock
+yarn*
+pnpm*
+.vscode

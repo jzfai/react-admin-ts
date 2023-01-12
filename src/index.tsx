@@ -8,8 +8,8 @@ import 'antd/dist/antd.css'
 import './styles/index.scss'
 //svg-icon
 import 'virtual:svg-icons-register'
-
+//import unocss
+import 'uno.css'
 //error log collect
 import '@/views/error-log/errorLogCollect'
-
 ReactDOM.render(<App />, document.getElementById('root'))

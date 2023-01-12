@@ -1,24 +1,7 @@
-interface SettingTy {
-  title: string
-  logo: string
-  fixedHeader: boolean
-  sidebarLogo: boolean
-  showTitle: boolean
-  showLeftMenu: boolean
-  ShowDropDown: boolean
-  showHamburger: boolean
-  isNeedLogin: boolean
-  isNeedNprogress: boolean
-  needTagsView?: boolean
-  tagsViewNum?: number
-  openProdMock: boolean
-  errorLog: string | Array<string>
-  viteBasePath: string
-}
+const setting = {
+  title: 'React Admin Ts',
+  logo: 'https://github.jzfai.top/file/images/sidebar-logo.svg',
 
-const setting: SettingTy = {
-  title: 'Vue3 Admin Ts',
-  logo: 'http://8.135.1.141/file/images/logo.svg',
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
@@ -50,23 +33,11 @@ const setting: SettingTy = {
    * @description Whether need login
    */
   isNeedLogin: true,
-
   /**
    * @type {boolean} true | false
    * @description Whether need nprogress
    */
   isNeedNprogress: true,
-
-  /**
-   * @type {boolean} true | false
-   * @description Whether show TagsView
-   */
-  // needTagsView: true,
-  // /**
-  //  * @description TagsView show number
-  //  */
-  // tagsViewNum: 6,
-  //showSettings: true
   /**
    * @type {boolean} true | false
    * @description Whether  open prod mock
@@ -80,11 +51,12 @@ const setting: SettingTy = {
    * If you want to also use it in dev, you can pass ['build', 'serve']
    */
   errorLog: ['build'],
+
   /*
    * vite.config.js base config
    * such as
    * */
-  viteBasePath: '/react-admin-ts/'
+  viteBasePath: './'
 }
 
 export default setting

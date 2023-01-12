@@ -6,7 +6,7 @@ import { asyncRouters } from '@/router/config'
 import { Menu } from 'antd'
 const { SubMenu } = Menu
 import Icon from './Icon'
-import path from 'path'
+import path from 'path-browserify'
 import { isExternal } from '@/utils/validate'
 import { ObjTy } from '~/common'
 import { StateTy } from '~/store'

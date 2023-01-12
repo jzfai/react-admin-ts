@@ -1,12 +1,13 @@
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer'
-
-//using import.meta.glob auto import  prefer !!!
-const modulesFiles = import.meta.globEager('../mock/*.ts')
-const modules: Array<any> = []
-for (const path in modulesFiles) {
-  modules.push(...modulesFiles[path].default)
+//https://cn.vitejs.dev/guide/features.html#glob-import
+const modulesFiles = import.meta.glob('../mock/*', { eager: true })
+let modules = []
+for (const filePath in modulesFiles) {
+  //读取文件内容到 modules
+  // @ts-ignore
+  modules = modules.concat(modulesFiles[filePath].default)
 }
-
 export function setupProdMockServer() {
-  createProdMockServer(modules)
+  //创建prod mock server
+  createProdMockServer([...modules])
 }

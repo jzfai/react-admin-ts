@@ -9,7 +9,7 @@ function Sidebar() {
   return (
     <Fragment>
       {/*logo*/}
-      {settings.logo && <Logo />}
+      <Logo />
       <MenuItem />
     </Fragment>
   )
